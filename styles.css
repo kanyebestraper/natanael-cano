@@ -440,4 +440,245 @@ body {
 
 .checklist li {
   padding: 0.5rem 0;
-  display:
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.checklist li i {
+  font-size: 0.9rem;
+}
+
+.in-scope .checklist li i {
+  color: var(--success-color);
+}
+
+.out-scope .checklist li i {
+  color: var(--danger-color);
+}
+
+/* Criterios de aceptación */
+.acceptance-criteria {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.acceptance-criteria h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.criterion-card {
+  background: var(--bg-body);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-color);
+  position: relative;
+  transition: var(--transition);
+}
+
+.criterion-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.criterion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.criterion-code {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+}
+
+.criterion-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.pending {
+  background: rgba(255, 193, 7, 0.1);
+  color: #856404;
+}
+
+.status-badge.completed {
+  background: rgba(40, 167, 69, 0.1);
+  color: var(--success-color);
+}
+
+/* Tabla de restricciones */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.constraints-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.constraints-table th,
+.constraints-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.constraints-table th {
+  background: var(--bg-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.constraints-table tr:hover {
+  background: rgba(3, 102, 214, 0.03);
+}
+
+.constraints-table td {
+  color: var(--text-secondary);
+}
+
+.constraints-table td strong {
+  color: var(--text-primary);
+}
+
+/* Botones de acción */
+.btn-add {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-body);
+  border: 2px dashed var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: var(--transition);
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-add:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(3, 102, 214, 0.05);
+}
+
+.btn-icon-small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--danger-color);
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.objective-item:hover .btn-icon-small,
+tr:hover .btn-icon-small {
+  opacity: 1;
+}
+
+.btn-icon-small:hover {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+/* Utilidades */
+.hidden {
+  display: none !important;
+}
+
+.editable:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Footer */
+.document-footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  padding: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Modo edición */
+.editing .hidden {
+  display: flex !important;
+}
+
+.editing .actions {
+  display: table-cell !important;
+}
+
+/* Impresión */
+@media print {
+  .floating-controls,
+  .btn-add,
+  .toggle-btn,
+  .btn-icon-small {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+  
+  .editable {
+    border: none !important;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
