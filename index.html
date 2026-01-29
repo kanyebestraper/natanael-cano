@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Definición de Alcance - Proyecto Sistema de Gestión de Inventario">
+  <title>Definición de Alcance – Proyecto X</title>
+  
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Controles flotantes -->
+  <div class="floating-controls">
+    <button id="themeToggle" class="btn-icon" title="Cambiar tema">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button id="editToggle" class="btn-icon" title="Modo edición">
+      <i class="fas fa-pen"></i>
+    </button>
+    <button id="printBtn" class="btn-icon" title="Imprimir / PDF">
+      <i class="fas fa-print"></i>
+    </button>
+    <button id="saveBtn" class="btn-icon" title="Guardar cambios">
+      <i class="fas fa-save"></i>
+    </button>
+  </div>
+
+  <!-- Notificación -->
+  <div id="notification" class="notification hidden">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Cambios guardados correctamente</span>
+  </div>
+
+  <div class="container">
+    <header class="project-header">
+      <div class="header-content">
+        <span class="badge">Documento de Alcance</span>
+        <h1 contenteditable="false" class="editable-title">
+          Proyecto: Sistema de Gestión de Inventario – Tienda X
+        </h1>
+        <div class="meta-info">
+          <span class="meta-item">
+            <i class="fas fa-calendar"></i>
+            <span id="currentDate"></span>
+          </span>
+          <span class="meta-item">
+            <i class="fas fa-clock"></i>
+            <span id="countdown">Calculando...</span>
+          </span>
+          <span class="meta-item status-indicator">
+            <i class="fas fa-circle"></i>
+            <span>En progreso</span>
+          </span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%" data-target="35"></div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <!-- Sección 1: Objetivo General -->
+      <section class="card objective-card" data-section="objetivo">
+        <div class="card-header">
+          <h2><i class="fas fa-bullseye"></i> 1. Objetivo general (SMART)</h2>
+          <button class="toggle-btn" aria-label="Colapsar sección">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+        <div class="card-content">
+          <p class="highlight editable" contenteditable="false">
+            Reducir el desfase de inventario del <strong>8%</strong> actual a un valor 
+            <strong>≤ 2%</strong> anual.
+          </p>
+          <div class="smart-tags">
+            <span class="tag">Específico</span>
+            <span class="tag">Medible</span>
+            <span class="tag">Alcanzable</span>
+            <span class="tag">Relevante</span>
+            <span class="tag">Time-bound</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 2: Objetivos Específicos -->
+      <section class="card" data-section="objetivos-especificos">
+        <div class="card-header">
+          <h2><i class="fas fa-tasks"></i> 2. Objetivos específicos</h2>
+          <button class="toggle-btn" aria-label="Colapsar sección">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+        <div class="card-content">
+          <ul class="objectives-list">
+            <li class="objective-item" data-id="oe1">
+              <div class="objective-header">
+                <span class="objective-code">OE1</span>
+                <button class="btn-icon-small delete-item" title="Eliminar objetivo">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              <div class="editable" contenteditable="false">
+                Tiempos de respuesta ≤ 1 s 
+                <span class="metric">
+                  (Indicador: <code>avg_latency</code>, Meta: 1 s, Fecha: 30/09/2025)
+                </span>
+              </div>
+              <div class="progress-indicator">
+                <div class="progress-mini" style="width: 60%"></div>
+              </div>
+            </li>
+          </ul>
+          <button id="addObjective" class="btn-add hidden">
+            <i class="fas fa-plus"></i> Agregar objetivo
+          </button>
+        </div>
+      </section>
+
+      <!-- Sección 3: Alcance -->
+      <section class="card scope-section" data-section="alcance">
+        <div class="card-header">
+          <h2><i class="fas fa-crosshairs"></i> 3. Alcance del Proyecto</h2>
+          <button class="toggle-btn" aria-label="Colapsar sección">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+        <div class="card-content">
+          <div class="scope-grid">
+            <!-- In Scope -->
+            <div class="scope-box in-scope">
+              <h3><i class="fas fa-check-circle"></i> In-Scope</h3>
+              <ul class="checklist editable-list" contenteditable="false">
+                <li><i class="fas fa-check"></i> CRUD de productos</li>
+                <li><i class="fas fa-check"></i> Alertas de stock mínimo</li>
+              </ul>
+            </div>
+
+            <!-- Out of Scope -->
+            <div class="scope-box out-scope">
+              <h3><i class="fas fa-times-circle"></i> Out-of-Scope</h3>
+              <ul class="checklist editable-list" contenteditable="false">
+                <li><i class="fas fa-times"></i> Facturación electrónica</li>
+                <li><i class="fas fa-times"></i> App móvil nativa</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Criterios de Aceptación -->
+          <div class="acceptance-criteria">
+            <h3><i class="fas fa-clipboard-check"></i> Criterios de aceptación</h3>
+            <div class="criteria-grid">
+              <div class="criterion-card editable" contenteditable="false" data-id="ca1">
+                <div class="criterion-header">
+                  <span class="criterion-code">CA1</span>
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <p>Tiempo de respuesta ≤ 1 s</p>
+                <div class="status-badge pending">Pendiente</div>
+              </div>
+              <div class="criterion-card editable" contenteditable="false" data-id="ca2">
+                <div class="criterion-header">
+                  <span class="criterion-code">CA2</span>
+                  <i class="fas fa-server"></i>
+                </div>
+                <p>Disponibilidad del 99% en horario comercial</p>
+                <div class="status-badge pending">Pendiente</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 4: Restricciones -->
+      <section class="card" data-section="restricciones">
+        <div class="card-header">
+          <h2><i class="fas fa-lock"></i> 4. Restricciones</h2>
+          <button class="toggle-btn" aria-label="Colapsar sección">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+        <div class="card-content">
+          <div class="table-responsive">
+            <table class="constraints-table">
+              <thead>
+                <tr>
+                  <th>Parámetro</th>
+                  <th>Valor</th>
+                  <th class="actions hidden">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="constraintsBody">
+                <tr>
+                  <td class="editable" contenteditable="false">Presupuesto</td>
+                  <td class="editable" contenteditable="false">30,000 USD</td>
+                  <td class="actions hidden">
+                    <button class="btn-icon-small delete-row" title="Eliminar">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="editable" contenteditable="false">Duración</td>
+                  <td class="editable" contenteditable="false">6 meses</td>
+                  <td class="actions hidden">
+                    <button class="btn-icon-small delete-row" title="Eliminar">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="editable" contenteditable="false">Stack Tecnológico</td>
+                  <td class="editable" contenteditable="false">PostgreSQL, Node.js, React</td>
+                  <td class="actions hidden">
+                    <button class="btn-icon-small delete-row" title="Eliminar">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="editable" contenteditable="false">Normativas</td>
+                  <td class="editable" contenteditable="false">Protección de datos local (GDPR/Leyes locales)</td>
+                  <td class="actions hidden">
+                    <button class="btn-icon-small delete-row" title="Eliminar">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button id="addConstraint" class="btn-add hidden">
+            <i class="fas fa-plus"></i> Agregar restricción
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="document-footer">
+      <p>Documento generado el <span id="footerDate"></span> | 
+         <span class="editable" contenteditable="false">Confidencial - Uso interno</span></p>
+    </footer>
+  </div>
+
+  <!-- JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
